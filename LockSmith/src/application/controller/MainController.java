@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 
 public class MainController {
 	@FXML
-	private TextField inputField;
+	private TextField inputField1;
 	@FXML
 	private TextField inputField2;
 	
@@ -21,8 +21,9 @@ public class MainController {
 	/**
 	 * called when sign up button is pressed
 	 */
+	 @FXML
 	public void handle1() {
-		String username = inputField.getText(); 
+		String username = inputField1.getText(); 
 		 String masterPassword = inputField2.getText();
 		 model.signUp(username, masterPassword);
 	 }
@@ -30,8 +31,9 @@ public class MainController {
 	 * called when sign in button is pressed
 	 * @throws IOException 
 	 */
+	 @FXML
 	public void handle2() throws IOException {
-		String username = inputField.getText(); 
+		String username = inputField1.getText(); 
 		 String password = inputField2.getText();
 		 boolean isMatch=model.login(username, password);
 		 
