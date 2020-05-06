@@ -11,12 +11,12 @@ public void start(Stage primaryStage) {
 	try 
 	{	
 		FXMLLoader FLoader = new FXMLLoader(getClass().getResource("../view/Whatever.fxml"));
-		FLoader.setController( );
+		//FLoader.setController( );
 		Parent FRoot = FLoader.load();
-		Scene FScene = new Scene(FRoot,xSize,ySize);
+		//Scene FScene = new Scene(FRoot,xSize,ySize);
 		
 		
-		primaryStage.setScene(FScene);
+	//	primaryStage.setScene(FScene);
 		primaryStage.setTitle("Title");
 		primaryStage.show();
 		} 
