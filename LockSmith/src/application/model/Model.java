@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Model {
@@ -15,10 +18,8 @@ public class Model {
 	/**
 	 * this method varifies the username and password
 	 * if varified return true, else return false.
-	 * 
 	 *First, all the username and password from file are saved in arrayList named log
 	 *it uses that arraylist to varify if the username and password matches.
-	 * 
 	 * @param username
 	 * @param password
 	 * @return
@@ -59,7 +60,6 @@ public class Model {
 
 	/**
 	 * This method is called by model to sign up new user
-	 * 
 	 * @param username
 	 * @param masterPassword
 	 */
@@ -77,7 +77,23 @@ public class Model {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		// After Master userName and Password is saved, it creates file with that username
+	}
+	
+	public void createCSV(String s) {
+		try {
+			//if the file with same username exists, it will not create a new file
+			if(Files.exists(Paths.get(s))) { 
+				   System.out.println("file already exists");
+				   return;
+				}
+			   PrintWriter pw= new PrintWriter(new File(s));
+			   pw.close();
+			   
+			   System.out.println("finished");
+			   } catch (Exception e) {
+			      // TODO: handle exception
+			   }
 	}
 
 }
