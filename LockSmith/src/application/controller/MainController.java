@@ -16,7 +16,11 @@ public class MainController {
 	/**
 	 * called when sign up button is pressed
 	 */
-
+	public void handle1() {
+		String username = inputField.getText(); 
+		 String masterPassword = inputField2.getText();
+		 Model model = new Model();
+		 model.signUp(username, masterPassword);
 	 }
 
 }
