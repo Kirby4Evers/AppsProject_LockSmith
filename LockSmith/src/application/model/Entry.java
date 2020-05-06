@@ -1,4 +1,4 @@
-#package application.model;
+package application.model;
 public class Entry{
   private String website;
   private String username;
