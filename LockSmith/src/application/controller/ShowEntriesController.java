@@ -53,7 +53,7 @@ public class ShowEntriesController {
 		try {
 		ShowEntryInfo eCtonroller = new ShowEntryInfo( e );
 
-		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("src/application/view/WebsiteUI.fxml"));
+		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
 		eLoader.setController(eCtonroller);
 		Parent eRoot = eLoader.load();
 		Scene eScene = new Scene(eRoot,600,600);
