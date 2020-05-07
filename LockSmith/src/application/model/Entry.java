@@ -6,17 +6,16 @@ public class Entry{
   private String email;
   
   public Entry(){
-    website = null;
-    username = null;
-    password = null;
-    email = null;
+    website = "";
+    username = "";
+    password = "";
+    email = "";
     
   }
   
   public Entry(String website, String username, String password, String email){
     this.website = website;
     this.username = username;
-    //TODO: run entered password string through encryption method
     this.password = password;
     this.email = email;
   }
@@ -33,15 +32,10 @@ public class Entry{
     return this.password;
   }
   
-  public String getEmil(){
+  public String getEmail(){
 	    return this.email;
   }
-  
-  /*
-  public String getPasswordDecrypted(){
-    //TODO: add method of decryption
-    return this.password;
-  }*/
+ 
   
   public void setWebsite(String website){
     this.website = website;
