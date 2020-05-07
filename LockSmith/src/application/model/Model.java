@@ -93,7 +93,10 @@ public class Model {
 				   System.out.println("file already exists");
 				   return;
 				}
+			
 			   PrintWriter pw= new PrintWriter(new File(s));
+
+			   
 			   pw.close();
 			   
 			   System.out.println("finished");
@@ -101,5 +104,10 @@ public class Model {
 			      // TODO: handle exception
 			   }
 	}
+	public void readingFile() {
+		
+	}
+	
+	
 
 }
