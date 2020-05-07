@@ -51,7 +51,7 @@ public class ShowEntriesController {
 
 	public void switchToEntry(Entry e){
 		try {
-		ShowEntryInfo eCtonroller = new ShowEntryInfo( model );
+		ShowEntryInfo eCtonroller = new ShowEntryInfo( e );
 
 		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("src/application/view/WebsiteUI.fxml"));
 		eLoader.setController(eCtonroller);

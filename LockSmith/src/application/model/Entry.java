@@ -33,7 +33,7 @@ public class Entry{
     return this.password;
   }
   
-  public String getEmil(){
+  public String getEmail(){
 	    return this.email;
   }
   

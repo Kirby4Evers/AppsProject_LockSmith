@@ -1,14 +1,16 @@
 package application.controller;
 
+import application.model.Entry;
 import application.model.Model;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class ShowEntryInfo {
-	private Model model;
+	private Entry entry;
 	
-	public ShowEntryInfo(Model m) {
-		this.model = m;
+	public ShowEntryInfo(Entry e) {
+		this.entry = e;
+		fill();
 	}
 	
 	@FXML
@@ -24,11 +26,17 @@ public class ShowEntryInfo {
 	//getting user input and saving into the files related to that user
 		@FXML
 		public void save() {
-			String usr=user.getText();
-			String pass=password.getText();
-			String ema= email.getText();
-			String web= website.getText();
+			entry.setWebsite(website.getText() );
+			entry.setEmail(email.getText() );
+			entry.setPassword(password.getText() );
+			entry.setUsername(user.getText() );
 			
-			
+		}
+		
+		public void fill() {
+			user.setText( entry.getUsername() );
+			password.setText( entry.getPassword() );
+			email.setText( entry.getEmail() );
+			website.setText( entry.getWebsite());
 		}
 }
