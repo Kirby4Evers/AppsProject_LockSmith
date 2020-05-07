@@ -17,10 +17,10 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#585e65" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-    <Rectangle arcHeight="129.0" arcWidth="103.0" fill="#808080" height="372.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
+    <Rectangle arcHeight="129.0" arcWidth="103.0" fill="GREY" height="372.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
     <Rectangle arcHeight="129.0" arcWidth="103.0" fill="#bfbfbf" height="300.9999694824219" layoutX="24.0" layoutY="71.0" stroke="BLACK" strokeType="INSIDE" width="541.0" />
     <ScrollPane fx:id="scrollEntries" blendMode="HARD_LIGHT" fitToHeight="false" fitToWidth="true" hbarPolicy="NEVER" layoutX="53.0" layoutY="85.0" prefHeight="271.0" prefWidth="491.0" vbarPolicy="AS_NEEDED">
       <content>
