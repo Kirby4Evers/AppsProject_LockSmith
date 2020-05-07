@@ -29,6 +29,15 @@ public class ShowEntriesController {
 	}
 	
 	@FXML VBox entriesBox;
+	
+	@FXML
+	public void add() {
+		
+		Entry e = new Entry();
+		switchToEntry(e);
+	}
+	
+	
 	public void fillEntries() {
 		
 		

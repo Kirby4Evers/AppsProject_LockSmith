@@ -48,9 +48,9 @@
         <Image url="@locksmithLogo.png" />
       </image>
     </ImageView>
-    <ImageView fitHeight="51.0" fitWidth="68.0" layoutX="459.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="plus" fitHeight="43.0" fitWidth="43.0" layoutX="467.0" layoutY="20.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@copyIcon.png" />
+        <Image url="@plus.png" />
       </image>
     </ImageView>
   </children>
