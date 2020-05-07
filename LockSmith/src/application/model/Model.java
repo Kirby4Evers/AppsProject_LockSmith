@@ -98,7 +98,7 @@ public class Model {
 				   return;
 				}
 			
-			   PrintWriter pw= new PrintWriter(new File(s));
+			   PrintWriter pw= new PrintWriter(new File(path));
 
 			   
 			   pw.close();
