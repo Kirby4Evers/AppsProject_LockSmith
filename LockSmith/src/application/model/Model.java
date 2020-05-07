@@ -16,6 +16,7 @@ import application.model.LogIn;
 public class Model {
 	private ArrayList<Entry> entries = new ArrayList<Entry>();
 	private ArrayList<LogIn> log = new ArrayList<LogIn>();
+	private String csvFolderPath = "application/model/csvFiles/";
 
 	/**
 	 * this method varifies the username and password
@@ -31,7 +32,7 @@ public class Model {
 		boolean result=true;
 		try {
 
-			BufferedReader br = new BufferedReader(new FileReader("csvFiles/MasterUsers.csv"));
+			BufferedReader br = new BufferedReader(new FileReader(csvFolderPath + "MasterUsers.csv"));
 			String line = "";
 			while ((line = br.readLine()) != null && !line.isEmpty()) {
 				String[] fields = line.split(",");
@@ -71,7 +72,7 @@ public class Model {
 	public void signUp(String username, String masterPassword) {
 		
 		String hashedP = Security.hash(masterPassword);
-		File file = new File("csvFiles/MasterUsers.csv");
+		File file = new File(csvFolderPath + "MasterUsers.csv");
 		
 		try {
 			FileWriter printer = new FileWriter(file, true);
@@ -85,14 +86,14 @@ public class Model {
 		}
 		// After Master userName and Password is saved, it creates file with that username
 		Model m= new Model();
-		m.createCSV( "csvFiles/"+username+".csv" );
+		m.createCSV(username);
 	}
 	
 	public void createCSV(String s) {
 		
 		try {
 			//if the file with same username exists, it will not create a new file
-			String path = "csvFiles/" + s + ".csv";
+			String path = csvFolderPath + s + ".csv";
 
 			if(Files.exists(Paths.get(path))) { 
 				   System.out.println("file already exists");
@@ -112,7 +113,8 @@ public class Model {
 
 
 	public void readingFile(String username) {
-		String path = "csvFiles/" + username + ".csv";
+		
+		String path = csvFolderPath + username + ".csv";
 		try {
 
 			BufferedReader br = new BufferedReader(new FileReader(path));
