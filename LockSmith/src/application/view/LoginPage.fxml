@@ -15,7 +15,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#585e65" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="68.0" layoutX="302.0" layoutY="59.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
       <TextField fx:id="inputField1" layoutX="300.0" layoutY="175.0" prefHeight="30.0" prefWidth="275.0" />
-      <PasswordField fx:id="inputField2" layoutX="300.0" layoutY="225.0" onAction="#handle2" prefHeight="30.0" prefWidth="275.0" />
+      <PasswordField fx:id="inputField2" layoutX="300.0" layoutY="225.0" prefHeight="30.0" prefWidth="275.0" />
       <Label layoutX="100.0" layoutY="175.0" text="Username" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -31,7 +31,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="251.0" layoutY="342.0" mnemonicParsing="false" text="Sign Up">
+      <Button layoutX="251.0" layoutY="342.0" mnemonicParsing="false" onAction="#handle2" text="Sign Up">
          <font>
             <Font size="20.0" />
          </font>

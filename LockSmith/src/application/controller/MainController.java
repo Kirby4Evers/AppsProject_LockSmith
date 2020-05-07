@@ -25,7 +25,7 @@ public class MainController {
 
 		String username = inputField1.getText();
 		String masterPassword = inputField2.getText();
-
+	
 		model.signUp(username, masterPassword);
 	}
 
@@ -38,17 +38,20 @@ public class MainController {
 	public void handle1() throws IOException {
 		String username = inputField1.getText();
 		String password = inputField2.getText();
+		System.out.println(username);
+		System.out.println(password);
 		boolean isMatch = model.login(username, password);
+		System.out.println(isMatch);
 		// if match, should go to next page.
 		// TODO: if (isMatch)go to next page
-//		if (isMatch) {
-//			System.out.println("correct password");}
-//		// if password is not match, dialog box will appear with message.
-//		else {
-//			Alert alert = new Alert(AlertType.INFORMATION);
-//			alert.setContentText("Incorrect Password!!");
-//			alert.show();
-//		}
+		if (isMatch) {
+		System.out.println("correct password");}
+		// if password is not match, dialog box will appear with message.
+	else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText("Incorrect Password!!");
+			alert.show();
+		}
 	
 
 		

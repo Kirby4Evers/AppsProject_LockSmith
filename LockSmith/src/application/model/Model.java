@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import application.model.LogIn;
+
 public class Model {
 	private ArrayList<Entry> entries = new ArrayList<Entry>();
 	private ArrayList<LogIn> log = new ArrayList<LogIn>();
@@ -25,18 +27,18 @@ public class Model {
 	 * @return
 	 * @throws IOException
 	 */
-	public boolean login(String username, String password) throws IOException {
-		boolean result = true;
+	public boolean login(String u, String p) throws IOException {
+		boolean result=true;
 		try {
 
 			BufferedReader br = new BufferedReader(new FileReader("Master.csv"));
 			String line = "";
 			while ((line = br.readLine()) != null && !line.isEmpty()) {
 				String[] fields = line.split(",");
-				String u = fields[0];
-				String p = fields[1];
+				String username = fields[0];
+				String password = fields[1];
 
-				LogIn z = new LogIn(u, p);
+				LogIn z = new LogIn(username, password);
 				log.add(z);
 			}
 			br.close();
@@ -44,15 +46,17 @@ public class Model {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
+	
+	
+	
 		for (int j = 0; j < log.size(); j++) {
 
 			LogIn data2 = log.get(j);
-			if (data2.getUsername().equals(username) && data2.getPassword().equals(password)) {
-				result = true;
-				break;
-			} else
-				result = false;
+			if ((data2.getUsername().equals(u)) && (data2.getPassword().equals(p)) ){
+				result= true;
+				break;}
+			else
+				result= false;
 
 		}
 		return result;
