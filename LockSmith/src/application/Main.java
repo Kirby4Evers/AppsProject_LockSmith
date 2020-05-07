@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 		@Override
 		public void start(Stage primaryStage) {
 			try {
-				String path = System.getProperty("user.dir") + "\\src\\application\\view\\LoginPage.fxml" ;
-				//"C:\Users\Kyle\Documents\GitHub\AppsProject_LockSmith\LockSmith\src\application\view"
 				MainController mCtrl = new MainController(primaryStage); //stage will be used to change scenes
 				FXMLLoader loader = new FXMLLoader( getClass().getResource( "view/LoginPage.fxml") );
 				loader.setController(mCtrl);
