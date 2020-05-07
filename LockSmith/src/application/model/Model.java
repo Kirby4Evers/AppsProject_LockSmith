@@ -16,7 +16,7 @@ import application.model.LogIn;
 public class Model {
 	private ArrayList<Entry> entries = new ArrayList<Entry>();
 	private ArrayList<LogIn> log = new ArrayList<LogIn>();
-	private String csvFolderPath = "src/application/model/csvFiles/";
+	public String csvFolderPath = "src/application/model/csvFiles/";
 
 	/**
 	 * this method varifies the username and password
@@ -138,6 +138,9 @@ public class Model {
 		
 	}
 	
+	public ArrayList<Entry> getEntries() {
+		return entries;
+	}
 	
 
 }
