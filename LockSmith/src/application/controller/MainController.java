@@ -73,7 +73,7 @@ public class MainController {
 	public void loadWebsites() {
 		try {
 		ShowEntriesController seCtrl = new ShowEntriesController(model, stage);
-		FXMLLoader seLoader = new FXMLLoader(getClass().getResource("src/application/view/showEntries.fxml"));
+		FXMLLoader seLoader = new FXMLLoader(getClass().getResource("../view/showEntries.fxml"));
 		seLoader.setController(seCtrl);
 		Parent seRoot = seLoader.load();
 		Scene seScene = new Scene(seRoot,600,600);
