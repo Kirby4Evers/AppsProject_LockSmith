@@ -16,7 +16,7 @@ import application.model.LogIn;
 public class Model {
 	private ArrayList<Entry> entries = new ArrayList<Entry>();
 	private ArrayList<LogIn> log = new ArrayList<LogIn>();
-	private String csvFolderPath = "application/model/csvFiles/";
+	private String csvFolderPath = "src/application/model/csvFiles/";
 
 	/**
 	 * this method varifies the username and password
