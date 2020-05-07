@@ -16,13 +16,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class ShowEntriesController {
 	Model model;
+	Stage stage;
 	
-	public ShowEntriesController(Model m)
+	public ShowEntriesController(Model m, Stage s)
 	{
 		this.model = m;
+		this.stage = s;
 	}
 	
 	@FXML VBox entriesBox;
@@ -46,8 +49,8 @@ public class ShowEntriesController {
 		}
 	}
 
-	public void switchToEntry(Entry e) throws IOException {
-		
+	public void switchToEntry(Entry e){
+		try {
 		ShowEntryInfo eCtonroller = new ShowEntryInfo();
 
 		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("src/application/view/WebsiteUI.fxml"));
@@ -55,8 +58,13 @@ public class ShowEntriesController {
 		Parent eRoot = eLoader.load();
 		Scene eScene = new Scene(eRoot,600,600);
 		
-		Main.primaryStage.setScene(eScene);
-		Main.primaryStage.setTitle("LockSmith");
-		Main.primaryStage.show();
+		stage.setScene(eScene);
+		stage.setTitle("LockSmith");
+		stage.show();
+		
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 	}
 }
