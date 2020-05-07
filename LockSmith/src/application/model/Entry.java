@@ -61,10 +61,12 @@ public class Entry{
 	    this.email = email;
   }
   
+  /*
   //TODO: complete Encryption and Decryption methods
   private void Encrypt(){
   }
   private void Decrypt(){
   }
+  */
   
 }

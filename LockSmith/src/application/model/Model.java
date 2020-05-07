@@ -54,6 +54,7 @@ public class Model {
 			LogIn data2 = log.get(j);
 			if ((data2.getUsername().equals(u)) && (data2.getPassword().equals(hashedP)) ){
 				result= true;
+				//decrypt file here?
 				break;}
 			else
 				result= false;
@@ -84,7 +85,7 @@ public class Model {
 		}
 		// After Master userName and Password is saved, it creates file with that username
 		Model m= new Model();
-		m.createCSV(username);
+		m.createCSV( "csvFiles/"+username+".csv" );
 	}
 	
 	public void createCSV(String s) {
