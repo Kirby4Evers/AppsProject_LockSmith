@@ -18,7 +18,7 @@ public class MainController {
 	private Stage stage;
 	private Model model;
 	
-	MainController(Stage s)
+	public MainController(Stage s)
 	{
 		this.stage = s; //used for switching scenes
 		this.model = new Model();
@@ -28,26 +28,6 @@ public class MainController {
 	private TextField inputField1;
 	@FXML
 	private TextField inputField2;
-	
-	
-	@FXML
-	private TextField user;
-	@FXML
-	private TextField password;
-	@FXML
-	private TextField website;
-	@FXML
-	private TextField email;
-	
-	/*
-	// Creating object of model class
-	Model model = new Model();
-	//object of this class
-	MainController mainController= new MainController();
-	//object of Controller2 class
-	Controller2 controller2= new Controller2();
-	Stage primaryStage;
-	*/
 	
 
 	/**
@@ -88,28 +68,22 @@ public class MainController {
 			
 
 	}
-	//getting user input and saving into the files related to that user
-	@FXML
-	public void save() {
-		String usr=user.getText();
-		String pass=password.getText();
-		String ema= email.getText();
-		String web= website.getText();
-		
-		
-	}
+	
 	@FXML
 	public void loadWebsites() {
+		try {
 		ShowEntriesController seCtrl = new ShowEntriesController(model, stage);
 		FXMLLoader seLoader = new FXMLLoader(getClass().getResource("src/application/view/showEntries.fxml"));
 		seLoader.setController(seCtrl);
 		Parent seRoot = seLoader.load();
 		Scene seScene = new Scene(seRoot,600,600);
-		
 		stage.setScene(seScene);
 		stage.setTitle("LockSmith");
 		stage.show();
-		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

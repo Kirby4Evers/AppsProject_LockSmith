@@ -1,6 +1,7 @@
 package application;
 
 
+import application.controller.MainController;
 import application.model.Model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ import javafx.stage.Stage;
 		public void start(Stage primaryStage) {
 			try {
 				Parent root = FXMLLoader.load(getClass().getResource("/application/view/LoginPage.fxml"));
-				MainController mCtrl = MainController(primaryStage); //stage will be used to change scenes
+				MainController mCtrl = new MainController(primaryStage); //stage will be used to change scenes
 				FXMLLoader.setController(mCtrl);
 				
 				Scene scene = new Scene(root,600,600);
