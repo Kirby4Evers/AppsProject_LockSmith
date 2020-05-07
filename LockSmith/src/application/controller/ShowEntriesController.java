@@ -1,20 +1,26 @@
 package application.controller;
 
+import java.io.IOException;
+
+import application.Main;
 import application.model.Entry;
 import application.model.Model;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class showEntriesController {
+public class ShowEntriesController {
 	Model model;
 	
-	public showEntriesController(Model m)
+	public ShowEntriesController(Model m)
 	{
 		this.model = m;
 	}
@@ -33,15 +39,24 @@ public class showEntriesController {
 			HBox hbox = new HBox(20, web, usr); //20 is spacing
 			hbox.setPadding(new Insets(20, 0, 0, 0));
 			hbox.setAlignment( Pos.CENTER_LEFT );
-			hbox.setOnMouseClicked( ev -> handle(e) );
+			hbox.setOnMouseClicked( ev -> switchToEntry(e) );
 			
 			entriesBox.getChildren().add(hbox);
 			
 		}
 	}
 
-	private Object handle(Entry e) {
-		// TODO Auto-generated method stub
-		return null;
+	public void switchToEntry(Entry e) throws IOException {
+		
+		ShowEntryInfo eCtonroller = new ShowEntryInfo();
+
+		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("src/application/view/WebsiteUI.fxml"));
+		eLoader.setController(eCtonroller);
+		Parent eRoot = eLoader.load();
+		Scene eScene = new Scene(eRoot,600,600);
+		
+		Main.primaryStage.setScene(eScene);
+		Main.primaryStage.setTitle("LockSmith");
+		Main.primaryStage.show();
 	}
 }
