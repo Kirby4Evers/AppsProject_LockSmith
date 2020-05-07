@@ -88,9 +88,12 @@ public class Model {
 	}
 	
 	public void createCSV(String s) {
+		
 		try {
 			//if the file with same username exists, it will not create a new file
-			if(Files.exists(Paths.get(s))) { 
+			String path = "csvFiles/" + s + ".csv";
+
+			if(Files.exists(Paths.get(path))) { 
 				   System.out.println("file already exists");
 				   return;
 				}
