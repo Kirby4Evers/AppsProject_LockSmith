@@ -104,8 +104,26 @@ public class Model {
 			      // TODO: handle exception
 			   }
 	}
-	public void readingFile() {
-		
+	public void readFile(String username) throws IOException {
+		boolean result=true;
+		try {
+
+			BufferedReader br = new BufferedReader(new FileReader(username));
+			String line = "";
+			while ((line = br.readLine()) != null && !line.isEmpty()) {
+				String[] fields = line.split(",");
+				String web = fields[0];
+				String usr = fields[1];
+				String pass= fields[2];
+
+				Entry z = new Entry(web, usr, pass);
+				entries.add(z);
+			}
+			br.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
