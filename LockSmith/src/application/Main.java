@@ -14,10 +14,11 @@ import javafx.stage.Stage;
 		@Override
 		public void start(Stage primaryStage) {
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/LoginPage.fxml"));
-				Parent root = loader.load();
 				MainController mCtrl = new MainController(primaryStage); //stage will be used to change scenes
+				FXMLLoader loader = new FXMLLoader( getClass().getResource("src/application/view/LoginPage.fxml") );
 				loader.setController(mCtrl);
+				Parent root = loader.load();
+	
 				
 				Scene scene = new Scene(root,600,600);
 				primaryStage.setScene(scene);

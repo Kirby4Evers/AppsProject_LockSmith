@@ -1,7 +1,6 @@
 package application.controller;
 
 import application.model.Entry;
-import application.model.Model;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
