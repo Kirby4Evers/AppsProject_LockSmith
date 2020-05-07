@@ -86,8 +86,7 @@ public class MainController {
 	}
 	@FXML
 	public void loadWebsites() {
-		controller2.start(primaryStage);
-		
+	
 		
 	}
 
