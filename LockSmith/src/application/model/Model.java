@@ -82,8 +82,8 @@ public class Model {
 			e.printStackTrace();
 		}
 		// After Master userName and Password is saved, it creates file with that username
-	//	Model m= new Model();
-	//	m.createCSV(username);
+		Model m= new Model();
+		m.createCSV(username);
 	}
 	
 	public void createCSV(String s) {
