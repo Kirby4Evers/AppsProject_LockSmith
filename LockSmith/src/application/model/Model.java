@@ -89,14 +89,17 @@ public class Model {
 	}
 	
 	public void createCSV(String s) {
+		
 		try {
 			//if the file with same username exists, it will not create a new file
-			if(Files.exists(Paths.get(s))) { 
+			String path = "csvFiles/" + s + ".csv";
+
+			if(Files.exists(Paths.get(path))) { 
 				   System.out.println("file already exists");
 				   return;
 				}
 			
-			   PrintWriter pw= new PrintWriter(new File(s));
+			   PrintWriter pw= new PrintWriter(new File(path));
 
 			   
 			   pw.close();
@@ -106,6 +109,8 @@ public class Model {
 			      // TODO: handle exception
 			   }
 	}
+
+
 	public void readingFile(String username) {
 		String path = "csvFiles/" + username + ".csv";
 		try {
