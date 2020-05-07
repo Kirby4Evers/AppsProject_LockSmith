@@ -104,7 +104,28 @@ public class Model {
 			      // TODO: handle exception
 			   }
 	}
-	public void readingFile() {
+	public void readingFile(String username) {
+		String path = "csvFiles/" + username + ".csv";
+		try {
+
+			BufferedReader br = new BufferedReader(new FileReader("Master.csv"));
+			String line = "";
+			while ((line = br.readLine()) != null && !line.isEmpty()) {
+				String[] fields = line.split(",");
+				
+				String website = fields[0];
+				String usr = fields[1];
+				String pass = fields[2];
+				String email = fields[3];
+				Entry e = new Entry(website,usr,pass,email);
+				entries.add(e);
+				
+			}
+			br.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
