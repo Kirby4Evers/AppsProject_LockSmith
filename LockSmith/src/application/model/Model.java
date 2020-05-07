@@ -31,7 +31,7 @@ public class Model {
 		boolean result=true;
 		try {
 
-			BufferedReader br = new BufferedReader(new FileReader("Master.csv"));
+			BufferedReader br = new BufferedReader(new FileReader("csvFiles/MasterUsers.csv"));
 			String line = "";
 			while ((line = br.readLine()) != null && !line.isEmpty()) {
 				String[] fields = line.split(",");
@@ -48,11 +48,11 @@ public class Model {
 		}
 	
 	
-	
+		String hashedP = Security.hash(p);
 		for (int j = 0; j < log.size(); j++) {
 
 			LogIn data2 = log.get(j);
-			if ((data2.getUsername().equals(u)) && (data2.getPassword().equals(p)) ){
+			if ((data2.getUsername().equals(u)) && (data2.getPassword().equals(hashedP)) ){
 				result= true;
 				break;}
 			else
@@ -68,14 +68,15 @@ public class Model {
 	 * @param masterPassword
 	 */
 	public void signUp(String username, String masterPassword) {
-
-		File file = new File("Master.csv");
-
+		
+		String hashedP = Security.hash(masterPassword);
+		File file = new File("csvFiles/MasterUsers.csv");
+		
 		try {
 			FileWriter printer = new FileWriter(file, true);
 			printer.append(username + ",");
 
-			printer.append(masterPassword + ",");
+			printer.append(hashedP + ",");
 			printer.append("\n");
 			printer.close();
 		} catch (IOException e) {
@@ -110,7 +111,7 @@ public class Model {
 		String path = "csvFiles/" + username + ".csv";
 		try {
 
-			BufferedReader br = new BufferedReader(new FileReader("Master.csv"));
+			BufferedReader br = new BufferedReader(new FileReader(path));
 			String line = "";
 			while ((line = br.readLine()) != null && !line.isEmpty()) {
 				String[] fields = line.split(",");

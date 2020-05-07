@@ -18,7 +18,7 @@ public abstract class Security {
 	 * uses MD5 algorythm to hash password without salt
 	 * near carbon copy of https://howtodoinjava.com/security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/#md5 
 	 */
-	String hash(String text)
+	public static String hash(String text)
 	{
         String generatedPassword = null;
         try {
@@ -52,7 +52,7 @@ public abstract class Security {
 	 * based on a simple "blowfish" example described here
 	 * https://stackoverflow.com/questions/5244950/encryption-with-blowfish-in-java
 	 */
-	String encryptS(String text, String key) throws Exception
+	public static String encryptS(String text, String key) throws Exception
 	{
 		String strData="";
 		
@@ -76,7 +76,7 @@ public abstract class Security {
 	 * based on a simple "blowfish" example described here
 	 * https://stackoverflow.com/questions/5244950/encryption-with-blowfish-in-java
 	 */
-	String decryptS(String text, String key) throws Exception
+	public static String decryptS(String text, String key) throws Exception
 	{
 		String strData="";
 		
@@ -98,7 +98,7 @@ public abstract class Security {
 	 * Takes in a path to a text file and a key to encrypt with
 	 * encypts and saves the txt file
 	 */
-	void encryptF(String filePath, String key )
+	static void encryptF(String filePath, String key )
 	{
 		try
 		{
@@ -129,7 +129,7 @@ public abstract class Security {
 	 * Takes in a path to a encypted text file and a key to decypt with
 	 * decypts and saves the txt file
 	 */
-	void decryptF(String text, String key, String filePath)
+	static void decryptF(String text, String key, String filePath)
 	{
 		try
 		{
@@ -165,7 +165,7 @@ public abstract class Security {
 	 * May not use this function
 	 * Itended to create a uqnique key that is not the same as hashed password
 	 /*
-	String uniqueKey(String username, String key)
+	public static String uniqueKey(String username, String key)
 	{
 		//just smacking username and key together to rehash
 		//kind of just moving the goal post to make it slightly more difficult to get te passwords by 
