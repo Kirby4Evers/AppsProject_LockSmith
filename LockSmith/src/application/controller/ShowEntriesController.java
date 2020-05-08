@@ -59,7 +59,6 @@ public class ShowEntriesController {
 	
 	public void fillEntries() {
 		
-		System.out.println("Fill being called");
 		
 		for(Entry e: model.getEntries() )
 		{
@@ -73,7 +72,6 @@ public class ShowEntriesController {
 			
 			//make img
 			String imgPath = "file:///" +  System.getProperty("user.dir") + "\\src\\application\\view\\bar.png";
-			System.out.println(imgPath);
 			Image image = new Image(imgPath);
 			ImageView img = new ImageView();
 			img.setImage(image);
