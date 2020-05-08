@@ -114,7 +114,7 @@ public abstract class Security {
 		br.close();
 		
 		File file = new File(filePath);
-		FileWriter printer = new FileWriter(file, true);
+		FileWriter printer = new FileWriter(file, false);
 		printer.write(dataToWrite);
 		printer.close();
 		
@@ -129,7 +129,7 @@ public abstract class Security {
 	 * Takes in a path to a encypted text file and a key to decypt with
 	 * decypts and saves the txt file
 	 */
-	static void decryptF(String text, String key, String filePath)
+	static void decryptF( String filePath, String key)
 	{
 		try
 		{
@@ -145,7 +145,7 @@ public abstract class Security {
 		br.close();
 		
 		File file = new File(filePath);
-		FileWriter printer = new FileWriter(file, true);
+		FileWriter printer = new FileWriter(file, false);
 		printer.write(dataToWrite);
 		printer.close();
 		

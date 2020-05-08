@@ -23,12 +23,6 @@ public class MainController {
 		this.stage = s; //used for switching scenes
 		this.model = new Model();
 		
-		//do on exit
-		stage.setOnCloseRequest(event -> 
-		{
-				System.out.println("Stage is closing");
-				model.writeFile();
-		});
 	}
 	
 	@FXML
@@ -62,7 +56,15 @@ public class MainController {
 		boolean isMatch = model.login(username, password);
 		// if match, should go to next page, that shows all the websites
 		if (isMatch) {
-			model.readFile();
+			
+			//do on exit // done here for access to password (storing pass as a class var is a potential vulnerability)
+			stage.setOnCloseRequest(event -> 
+			{
+					System.out.println("Stage is closing");
+					model.writeFile(password);
+			});
+			
+			model.readFile(password);
 			loadWebsites();
 			
 		}
