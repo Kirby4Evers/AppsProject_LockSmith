@@ -223,20 +223,13 @@ public abstract class Security {
 	
 	
 	
-	/*
-	 * May not use this function
-	 * Itended to create a uqnique key that is not the same as hashed password
-	 /*
-	public static String uniqueKey(String username, String key)
+	
+	public static String uniqueKey(String key)
 	{
-		//just smacking username and key together to rehash
-		//kind of just moving the goal post to make it slightly more difficult to get te passwords by 
-		//direcly decypting useing password hash in masterUser txt file.
-		//This step won't stop someone with acess to the source code to breaking encryption
-		key = key + username;
+		
 		String uKey = hash(key);
 		return(uKey);
 	}
-*/
+
 }
 
