@@ -17,6 +17,7 @@ public class Model {
 	private ArrayList<Entry> entries = new ArrayList<Entry>();
 	private ArrayList<LogIn> log = new ArrayList<LogIn>();
 	public String csvFolderPath = "src/application/model/csvFiles/";
+	public String username = "";
 
 	/**
 	 * this method varifies the username and password
@@ -55,7 +56,7 @@ public class Model {
 			LogIn data2 = log.get(j);
 			if ((data2.getUsername().equals(u)) && (data2.getPassword().equals(hashedP)) ){
 				result= true;
-				//decrypt file here?
+				this.username = u;
 				break;}
 			else
 				result= false;
@@ -112,9 +113,41 @@ public class Model {
 	}
 
 
-	public void readingFile(String username) {
+	public void writeFile() {
+		System.out.println("Write is being called");
 		
-		String path = csvFolderPath + username + ".csv";
+		String path = csvFolderPath + this.username + ".csv";
+		try {
+			
+			File file = new File(csvFolderPath + "MasterUsers.csv");
+			FileWriter printer = new FileWriter(file, true);
+			
+			String data = "";
+			for (Entry e : entries)
+			{
+				data += e.getWebsite() + ",";
+				data += e.getUsername() + ",";
+				data += e.getPassword() + ",";
+				data += e.getEmail() + ",";
+				data += "\n";
+				
+			}
+			
+			
+			printer.write(data);
+			printer.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void readFile()
+	{
+		System.out.println("Read is being called");
+		
+		String path = csvFolderPath + this.username + ".csv";
 		try {
 
 			BufferedReader br = new BufferedReader(new FileReader(path));

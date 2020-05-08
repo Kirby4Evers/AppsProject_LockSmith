@@ -22,6 +22,13 @@ public class MainController {
 	{
 		this.stage = s; //used for switching scenes
 		this.model = new Model();
+		
+		//do on exit
+		stage.setOnCloseRequest(event -> 
+		{
+				System.out.println("Stage is closing");
+				model.writeFile();
+		});
 	}
 	
 	@FXML
@@ -55,6 +62,7 @@ public class MainController {
 		boolean isMatch = model.login(username, password);
 		// if match, should go to next page, that shows all the websites
 		if (isMatch) {
+			model.readFile();
 			loadWebsites();
 			
 		}
@@ -79,7 +87,6 @@ public class MainController {
 		Parent seRoot = seLoader.load();
 		Scene seScene = new Scene(seRoot,600,600);
 		stage.setScene(seScene);
-		stage.setTitle("LockSmith");
 		stage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -34,6 +34,7 @@ public class ShowEntriesController {
 	public void add() {
 		
 		Entry e = new Entry();
+		model.getEntries().add(e);
 		switchToEntry(e);
 	}
 	
@@ -60,7 +61,8 @@ public class ShowEntriesController {
 
 	public void switchToEntry(Entry e){
 		try {
-		ShowEntryInfo eCtonroller = new ShowEntryInfo( e );
+			
+		ShowEntryInfo eCtonroller = new ShowEntryInfo( e, stage, this );//used to go back
 
 		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
 		eLoader.setController(eCtonroller);
@@ -68,7 +70,6 @@ public class ShowEntriesController {
 		Scene eScene = new Scene(eRoot,600,600);
 		
 		stage.setScene(eScene);
-		stage.setTitle("LockSmith");
 		stage.show();
 		
 		} catch (IOException e1) {

@@ -1,20 +1,30 @@
 package application.controller;
 
+import java.io.IOException;
+
 import application.model.Entry;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ShowEntryInfo {
 	private Entry entry;
+	private Stage stage;
+	private ShowEntriesController retCtrl;
 	@FXML private TextField usernameField;
 	@FXML private TextField passwordField;
 	@FXML private TextField websiteName;
 	@FXML private TextField emailField;
 	
-	public ShowEntryInfo(Entry e) {
+	public ShowEntryInfo(Entry e, Stage s, ShowEntriesController ctrl) { //stage and return scene to go back to previous view
 		
 		this.entry = e;
+		this.stage = s;
+		this.retCtrl = ctrl;
 		
 	}
 	
@@ -32,6 +42,7 @@ public class ShowEntryInfo {
 			entry.setPassword(passwordField.getText() );
 			entry.setUsername(usernameField.getText() );
 			
+			goBack();	
 		}
 		
 		public void fill() {
@@ -45,6 +56,19 @@ public class ShowEntryInfo {
 		}
 		
 		public void goBack() {
+			try {
+				
 			
+				FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/showEntries.fxml"));
+				eLoader.setController( retCtrl );
+				Parent eRoot = eLoader.load();
+				Scene eScene = new Scene(eRoot,600,600);
+				
+				stage.setScene(eScene);
+				stage.show();
+				
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 		}
 }
