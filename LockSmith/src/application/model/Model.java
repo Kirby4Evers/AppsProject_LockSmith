@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import application.model.LogIn;
 
 /**
- * Group Project : LockSmith Spring-2020
+ * Group Project : LockSmith- Spring-2020
  * 
  * @authors Kyle Evers(RIY335) ; Sabita Paudyal Ghimire(agi486); Jonathan
  *          Villreal (zyj680); Pedro Jusino(ayt689) ; William G (Qoi678)
