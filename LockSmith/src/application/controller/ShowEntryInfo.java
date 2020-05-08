@@ -85,7 +85,7 @@ public class ShowEntryInfo {
 				ShowEntriesController retCtrl = new ShowEntriesController( model, stage);
 				eLoader.setController( retCtrl );
 				Parent eRoot = eLoader.load();
-				Scene eScene = new Scene(eRoot,600,600);
+				Scene eScene = new Scene(eRoot,600,400);
 				
 				stage.setScene(eScene);
 				stage.show();
