@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 				loader.setController(mCtrl);
 				Parent root = loader.load();
 	
-				Scene scene = new Scene(root,600,600);
+				Scene scene = new Scene(root,600,400);
 				primaryStage.setScene(scene);
 				primaryStage.setTitle("LockSmith");
 				primaryStage.show();

@@ -100,7 +100,7 @@ public class ShowEntriesController {
 		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
 		eLoader.setController(eCtonroller);
 		Parent eRoot = eLoader.load();
-		Scene eScene = new Scene(eRoot,600,600);
+		Scene eScene = new Scene(eRoot,600,400);
 		
 		stage.setScene(eScene);
 		stage.show();

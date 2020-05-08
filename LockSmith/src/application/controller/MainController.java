@@ -87,7 +87,7 @@ public class MainController {
 		FXMLLoader seLoader = new FXMLLoader(getClass().getResource("../view/showEntries.fxml"));
 		seLoader.setController(seCtrl);
 		Parent seRoot = seLoader.load();
-		Scene seScene = new Scene(seRoot,600,600);
+		Scene seScene = new Scene(seRoot,600,400);
 		stage.setScene(seScene);
 		stage.show();
 		} catch (IOException e) {
