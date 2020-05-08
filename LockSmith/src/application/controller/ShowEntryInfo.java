@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -51,13 +52,7 @@ public class ShowEntryInfo {
 	
 	@FXML
     public void initialize() {    
-		try {
-			fill();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("Fill failed, EXCEPTION: " + e);
-			e.printStackTrace();
-		}
+		fill(); //put here for @fxml access
 	}
 	
 	
@@ -65,20 +60,33 @@ public class ShowEntryInfo {
 		@FXML
 		public void save() {
 			
-			entry.setWebsite(websiteName.getText() );
-			entry.setEmail(emailField.getText() );
-			entry.setPassword(passwordField.getText() );
-			entry.setUsername(usernameField.getText() );
+			if (websiteName.getText().equals("") | websiteName.getText().equals(" ") )
+				entry.setWebsite("None");
+			else
+				entry.setWebsite(websiteName.getText() );
+			
+			if (emailField.getText().equals("") | emailField.getText().equals(" ") )
+				entry.setEmail("None");
+			else
+				entry.setEmail(emailField.getText() );
+			
+			if (passwordField.getText().equals("") | passwordField.getText().equals(" ") )
+				entry.setPassword("None");
+			else
+				entry.setPassword(passwordField.getText() );
+			
+			if (usernameField.getText().equals("") | usernameField.getText().equals(" ") )
+				entry.setUsername("None");
+			else
+				entry.setUsername(usernameField.getText() );
 			
 			goBack();	
 		}
 		
-		public void fill() throws Exception {
-			System.out.println(entry.getUsername());
-			System.out.println( usernameField.getText() );
+		public void fill() {
 			
 			usernameField.setText( entry.getUsername() );
-			passwordField.setText( entry.getPasswordDecrypted() );
+			passwordField.setText( entry.getPassword() );
 			emailField.setText( entry.getEmail() );
 			websiteName.setText( entry.getWebsite());
 		}
