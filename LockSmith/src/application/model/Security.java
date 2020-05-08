@@ -13,11 +13,19 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
- 
+
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Base64;
 
 
 public abstract class Security {
+	private static String salt = "ssshhhhhhhhhhh!!!!";
 	
 	/*
 	 * uses MD5 algorythm to hash password without salt
@@ -54,96 +62,61 @@ public abstract class Security {
 	/*
 	 * takes in a sting and key and returns encypted text
 	 * key should ideally be hashed master password
-	 * based on a simple "blowfish" example described here
-	 * https://stackoverflow.com/questions/5244950/encryption-with-blowfish-in-java
-	 * truncating the key to be 128 bits
+	 * direct copy of https://howtodoinjava.com/security/aes-256-encryption-decryption/
+	 * Tried doing a blowish algorythm but that never worked
 	 */
-	public static String encryptS(String text, String hashedP) throws Exception
+	public static String encryptS(String text, String key) throws Exception
 	{
-		String strData="";
-		//making the key 128 bytes
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(hashedP.getBytes());
-        byte[] mdbytes = md.digest();
-        byte[] key = new byte[mdbytes.length / 2];
-        
-        for(int I = 0; I < key.length; I++){
-            // Choice 1 for using only 128 bits of the 256 generated
-        	key[I] = mdbytes[I];
-        }
 		
 		try {
-				
-            // Create key and cipher
-            Key aesKey = new SecretKeySpec(key, "AES");
-            Cipher cipher = Cipher.getInstance("AES");
-            // encrypt the text
-            cipher.init(Cipher.ENCRYPT_MODE, aesKey);
-            byte[] encrypted = cipher.doFinal(text.getBytes());
-            strData = new String(encrypted);
-            //System.err.println(new String(encrypted));
-            // decrypt the text
-           
-			/*
-			SecretKeySpec skeyspec = new SecretKeySpec(key.getBytes(),"Blowfish");
 			
-			Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
-			cipher.init(Cipher.ENCRYPT_MODE, skeyspec);
-			byte[] encrypted = cipher.doFinal(text.getBytes("UTF-8"));
-			strData=new String(encrypted);
-			*/
-			
-		} catch (Exception e) {
+	        byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	        IvParameterSpec ivspec = new IvParameterSpec(iv);
+	         
+	        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+	        KeySpec spec = new PBEKeySpec(key.toCharArray(), salt.getBytes(), 65536, 256);
+	        SecretKey tmp = factory.generateSecret(spec);
+	        SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+	         
+	        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+	        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivspec);
+	        return Base64.getEncoder().encodeToString(cipher.doFinal(text.getBytes("UTF-8")));
+	        
+	    }  catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return strData;
 	}
 	
 	/*
 	 * takes in a encypted sting and key and returns decrypted text
 	 * key should ideally be hashed master password
-	 * based on a simple "blowfish" example described here
-	 * https://stackoverflow.com/questions/5244950/encryption-with-blowfish-in-java
+	 * direct copy of https://howtodoinjava.com/security/aes-256-encryption-decryption/
+	 * Tried doing a blowish algorythm but that never worked
 	 */
-	public static String decryptS(String text, String hashedP) throws Exception
+	public static String decryptS(String text, String key) throws Exception
 	{
 		
 		String strData="";
-		//making the key 128 bytes
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(hashedP.getBytes());
-        byte[] mdbytes = md.digest();
-        byte[] key = new byte[mdbytes.length / 2];
-        
-        for(int I = 0; I < key.length; I++){
-            // Choice 1 for using only 128 bits of the 256 generated
-        	key[I] = mdbytes[I];
-        }
+		
 		
 		try {
-			
-			Key aesKey = new SecretKeySpec(key, "AES");
-            Cipher cipher = Cipher.getInstance("AES");
-			
-			cipher.init(Cipher.DECRYPT_MODE, aesKey);
-			String decrypted = new String( cipher.doFinal(text.getBytes()) ) ;
-			strData = new String(decrypted);
-	        //System.err.println(decrypted);
-				
-			/*
-			SecretKeySpec sKeySpecs=new SecretKeySpec(key.getBytes(),"Blowfish");
-			Cipher cipher=Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
-			cipher.init(Cipher.DECRYPT_MODE, sKeySpecs);
-			byte[] decrypted=cipher.doFinal(text.getBytes());
-			strData=new String(decrypted);
-			*/
-			
-		} catch (Exception e) {
+	        byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	        IvParameterSpec ivspec = new IvParameterSpec(iv);
+	         
+	        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+	        KeySpec spec = new PBEKeySpec(key.toCharArray(), salt.getBytes(), 65536, 256);
+	        SecretKey tmp = factory.generateSecret(spec);
+	        SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
+	         
+	        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+	        cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
+	        return new String(cipher.doFinal(Base64.getDecoder().decode(text)));
+	        
+	    }  catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return strData;
 	}
 	
 	/*
@@ -220,16 +193,6 @@ public abstract class Security {
 	
 	
 	
-	
-	
-	
-	/*
-	public static String uniqueKey(String key)
-	{
-		
-		String uKey = hash(key);
-		return(uKey);
-	}
-	*/
+
 }
 

@@ -115,7 +115,7 @@ public class Model {
 
 	public void writeFile(String password) {
 		//System.out.println("Write is being called");
-		//String hashedP = Security.hash(password);
+		String hashedP = Security.hash(password);
 		
 		String path = csvFolderPath + this.username + ".csv";
 		try {
@@ -124,20 +124,24 @@ public class Model {
 			FileWriter printer = new FileWriter(file, false);
 			
 			String data = "";
+			String line = "";
 			for (Entry e : entries)
 			{
-				data += e.getWebsite() + ",";
-				data += e.getUsername() + ",";
-				data += e.getPassword() + ",";
-				data += e.getEmail() + "\n";
+				line += e.getWebsite() + ",";
+				line += e.getUsername() + ",";
+				line += e.getPassword() + ",";
+				line += e.getEmail();
+				
+				data += line + "\n";
+				line = "";
 				
 			}
 			
-			
+			System.out.println("Data:\n" + data + "\n End");
 			printer.write(data);
 			printer.close();
 			
-			//Security.encryptF(path, hashedP);
+			Security.encryptF(path, hashedP);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -147,12 +151,12 @@ public class Model {
 	
 	public void readFile(String password)
 	{
-		//String hashedP = Security.hash(password);
+		String hashedP = Security.hash(password);
 		//System.out.println("Read is being called");
 		
 		String path = csvFolderPath + this.username + ".csv";
 		try {
-			//Security.decryptF(path, hashedP);
+			Security.decryptF(path, hashedP);
 
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			String line = "";
@@ -164,7 +168,7 @@ public class Model {
 				String usr = fields[1];
 				String pass = fields[2];
 				String email = fields[3];
-				Entry e = new Entry(website,usr,pass,email,this.username);
+				Entry e = new Entry(website,usr,pass,email);
 				entries.add(e);
 				
 			}
