@@ -1,7 +1,7 @@
+
 package application.controller;
 
 import java.io.IOException;
-
 import application.Main;
 import application.model.Entry;
 import application.model.Model;
@@ -22,6 +22,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * Group Project : LockSmith   Spring-2020
+ * 
+ * @authors Kyle Evers(RIY335) ; Sabita Paudyal Ghimire(agi486); 
+ *          Jonathan Villreal (zyj680); Pedro Jusino(ayt689) ;
+ *          William G (Qoi678)
+ *
+ */
 public class ShowEntriesController {
 	Model model;
 	Stage stage;

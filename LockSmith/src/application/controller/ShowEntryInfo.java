@@ -14,6 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
+/**
+ * Group Project : LockSmith   Spring-2020
+ * 
+ * @authors Kyle Evers(RIY335) ; Sabita Paudyal Ghimire(agi486); 
+ *          Jonathan Villreal (zyj680); Pedro Jusino(ayt689) ;
+ *          William G (Qoi678)
+ *
+ */
 public class ShowEntryInfo {
 	private Entry entry;
 	private Stage stage;
