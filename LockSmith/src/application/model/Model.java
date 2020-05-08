@@ -119,8 +119,8 @@ public class Model {
 		String path = csvFolderPath + this.username + ".csv";
 		try {
 			
-			File file = new File(csvFolderPath + "MasterUsers.csv");
-			FileWriter printer = new FileWriter(file, true);
+			File file = new File(path);
+			FileWriter printer = new FileWriter(file, false);
 			
 			String data = "";
 			for (Entry e : entries)

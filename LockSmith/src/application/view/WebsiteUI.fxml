@@ -59,6 +59,6 @@
         <TextField fx:id="websiteName" alignment="CENTER" prefWidth="200.0" promptText="Insert Website Name" text="&lt;Insert Website Name&gt;" BorderPane.alignment="CENTER" />
       </center>
     </BorderPane>
-    <Button fx:id="saveButton" font="$x1" layoutX="295.0" layoutY="332.0" mnemonicParsing="false" text="Save" />
+    <Button fx:id="saveButton" font="$x1" layoutX="295.0" layoutY="332.0" mnemonicParsing="false" onAction="#save" text="Save" />
   </children>
 </AnchorPane>
