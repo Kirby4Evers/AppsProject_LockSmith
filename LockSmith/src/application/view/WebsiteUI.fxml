@@ -53,7 +53,7 @@
       </graphic>
     </Button>
     <Button fx:id="saveButton" font="$x1" layoutX="342.0" layoutY="332.0" mnemonicParsing="false" onAction="#save" text="Save" />
-    <TextField fx:id="websiteName" alignment="CENTER" layoutX="166.0" layoutY="113.0" prefWidth="330.0" promptText="" text="" />
+    <TextField fx:id="websiteName" alignment="CENTER_LEFT" layoutX="166.0" layoutY="113.0" prefWidth="330.0" promptText="" text="" />
     <Label alignment="CENTER_RIGHT" font="$x1" layoutX="41.0" layoutY="112.0" prefWidth="90.0" text="Website" textFill="#fcfcfc" />
     <Button id="usernameCopy" fx:id="websiteCopy" layoutX="520.0" layoutY="110.0" mnemonicParsing="false" onAction="#copyWeb">
       <graphic>

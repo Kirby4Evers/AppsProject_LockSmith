@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -28,7 +29,7 @@ public abstract class Security {
             // Create MessageDigest instance for MD5
             MessageDigest md = MessageDigest.getInstance("MD5");
             //Add password bytes to digest
-            md.update(text.getBytes());
+            md.update(text.getBytes("UTF-8") );
             //Get the hash's bytes 
             byte[] bytes = md.digest();
             //This bytes[] has bytes in decimal format;
@@ -41,7 +42,7 @@ public abstract class Security {
             //Get complete hashed password in hex format
             generatedPassword = sb.toString();
         } 
-        catch (NoSuchAlgorithmException e) 
+        catch (Exception e) 
         {
             e.printStackTrace();
         }
@@ -63,7 +64,7 @@ public abstract class Security {
 			SecretKeySpec skeyspec=new SecretKeySpec(key.getBytes(),"Blowfish");
 			Cipher cipher=Cipher.getInstance("Blowfish");
 			cipher.init(Cipher.ENCRYPT_MODE, skeyspec);
-			byte[] encrypted=cipher.doFinal(text.getBytes());
+			byte[] encrypted=cipher.doFinal(text.getBytes("UTF-8"));
 			strData=new String(encrypted);
 			
 		} catch (Exception e) {

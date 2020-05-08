@@ -59,17 +59,31 @@ public class ShowEntryInfo {
 	//getting user input and saving into the files related to that user
 		@FXML
 		public void save() {
-			entry.setWebsite(websiteName.getText() );
-			entry.setEmail(emailField.getText() );
-			entry.setPassword(passwordField.getText() );
-			entry.setUsername(usernameField.getText() );
+			
+			if (websiteName.getText().equals("") | websiteName.getText().equals(" ") )
+				entry.setWebsite("None");
+			else
+				entry.setWebsite(websiteName.getText() );
+			
+			if (emailField.getText().equals("") | emailField.getText().equals(" ") )
+				entry.setEmail("None");
+			else
+				entry.setEmail(emailField.getText() );
+			
+			if (passwordField.getText().equals("") | passwordField.getText().equals(" ") )
+				entry.setPassword("None");
+			else
+				entry.setPassword(passwordField.getText() );
+			
+			if (usernameField.getText().equals("") | usernameField.getText().equals(" ") )
+				entry.setUsername("None");
+			else
+				entry.setUsername(usernameField.getText() );
 			
 			goBack();	
 		}
 		
 		public void fill() {
-			System.out.println(entry.getUsername());
-			System.out.println( usernameField.getText() );
 			
 			usernameField.setText( entry.getUsername() );
 			passwordField.setText( entry.getPassword() );

@@ -129,8 +129,7 @@ public class Model {
 				data += e.getWebsite() + ",";
 				data += e.getUsername() + ",";
 				data += e.getPassword() + ",";
-				data += e.getEmail() + ",";
-				data += "\n";
+				data += e.getEmail() + "\n";
 				
 			}
 			
