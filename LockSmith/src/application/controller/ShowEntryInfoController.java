@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ShowEntryInfo {
+public class ShowEntryInfoController {
 	private Entry entry;
 	private Stage stage;
 	private Model model;
@@ -42,7 +42,7 @@ public class ShowEntryInfo {
 		Security.copyToClipboard( emailField.getText() ); 
 	}
 	
-	public ShowEntryInfo(Entry e, Stage s, Model model, Boolean tmp) { //stage and return scene to go back to previous view
+	public ShowEntryInfoController(Entry e, Stage s, Model model, Boolean tmp) { //stage and return scene to go back to previous view
 		
 		this.entry = e;
 		this.stage = s;

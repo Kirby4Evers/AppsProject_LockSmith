@@ -93,7 +93,7 @@ public class ShowEntriesController {
 	public void switchToEntry(Entry e, Boolean temporary){
 		try {
 			
-		ShowEntryInfo eCtonroller = new ShowEntryInfo( e, stage, model, temporary );//used to go back
+		ShowEntryInfoController eCtonroller = new ShowEntryInfoController( e, stage, model, temporary );//used to go back
 
 		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
 		eLoader.setController(eCtonroller);
