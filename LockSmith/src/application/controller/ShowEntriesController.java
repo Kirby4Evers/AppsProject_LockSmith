@@ -45,7 +45,7 @@ public class ShowEntriesController {
 		
 		Entry e = new Entry();
 		model.getEntries().add(e);
-		switchToEntry(e);
+		switchToEntry(e, true);
 	}
 	
 	
@@ -83,17 +83,17 @@ public class ShowEntriesController {
 			
 			HBox hbox = new HBox(anchor); //20 is spacing
 			hbox.setAlignment( Pos.CENTER_LEFT );
-			hbox.setOnMouseClicked( ev -> switchToEntry(e) );
+			hbox.setOnMouseClicked( ev -> switchToEntry(e, false) );
 			
 			entriesBox.getChildren().add(hbox);
 			
 		}
 	}
 
-	public void switchToEntry(Entry e){
+	public void switchToEntry(Entry e, Boolean temporary){
 		try {
 			
-		ShowEntryInfo eCtonroller = new ShowEntryInfo( e, stage, model );//used to go back
+		ShowEntryInfo eCtonroller = new ShowEntryInfo( e, stage, model, temporary );//used to go back
 
 		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
 		eLoader.setController(eCtonroller);

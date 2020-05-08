@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,6 +17,7 @@ public class ShowEntryInfo {
 	private Entry entry;
 	private Stage stage;
 	private Model model;
+	private Boolean temporary;
 
 	@FXML private TextField usernameField;
 	@FXML private TextField passwordField;
@@ -42,11 +42,12 @@ public class ShowEntryInfo {
 		Security.copyToClipboard( emailField.getText() ); 
 	}
 	
-	public ShowEntryInfo(Entry e, Stage s, Model model) { //stage and return scene to go back to previous view
+	public ShowEntryInfo(Entry e, Stage s, Model model, Boolean tmp) { //stage and return scene to go back to previous view
 		
 		this.entry = e;
 		this.stage = s;
 		this.model = model;
+		this.temporary = tmp;
 		
 	}
 	
@@ -80,6 +81,7 @@ public class ShowEntryInfo {
 			else
 				entry.setUsername(usernameField.getText() );
 			
+			temporary = false;
 			goBack();	
 		}
 		
@@ -94,6 +96,8 @@ public class ShowEntryInfo {
 		public void goBack() {
 			try {
 				
+				if (temporary)
+					model.getEntries().remove( entry );
 			
 				FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/showEntries.fxml"));
 				ShowEntriesController retCtrl = new ShowEntriesController( model, stage);
