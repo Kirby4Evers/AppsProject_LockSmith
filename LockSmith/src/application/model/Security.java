@@ -56,6 +56,7 @@ public abstract class Security {
 	 * key should ideally be hashed master password
 	 * based on a simple "blowfish" example described here
 	 * https://stackoverflow.com/questions/5244950/encryption-with-blowfish-in-java
+	 * truncating the key to be 128 bits
 	 */
 	public static String encryptS(String text, String hashedP) throws Exception
 	{
