@@ -31,6 +31,12 @@ public class ShowEntriesController {
 	@FXML VBox entriesBox;
 	
 	@FXML
+    public void initialize() {
+		fillEntries(); //happens after @FXML declarations
+	}
+	
+	
+	@FXML
 	public void add() {
 		
 		Entry e = new Entry();
@@ -41,6 +47,7 @@ public class ShowEntriesController {
 	
 	public void fillEntries() {
 		
+		System.out.println("Fill being called");
 		
 		for(Entry e: model.getEntries() )
 		{
