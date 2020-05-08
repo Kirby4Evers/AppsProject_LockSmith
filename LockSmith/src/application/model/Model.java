@@ -158,6 +158,7 @@ public class Model {
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			String line = "";
 			while ((line = br.readLine()) != null && !line.isEmpty()) {
+				System.out.println(line);
 				String[] fields = line.split(",");
 				
 				String website = fields[0];
