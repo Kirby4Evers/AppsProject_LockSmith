@@ -71,13 +71,15 @@ public class ShowEntriesController {
 			img.setImage(image);
 			
 			//set labels in AnchorPane
+			double xOffset = 10;
+			double yOffset = 7.5;
 			AnchorPane anchor = new AnchorPane();
-			AnchorPane.setTopAnchor(img, 0.0);
-			AnchorPane.setLeftAnchor(img, 0.0);
-			AnchorPane.setTopAnchor(web0, 7.0);
-			AnchorPane.setLeftAnchor(web0,12.5);
-			AnchorPane.setTopAnchor(web, 12.0);
-			AnchorPane.setLeftAnchor(web, 75.0);
+			AnchorPane.setTopAnchor(img, 0.0 + yOffset);
+			AnchorPane.setLeftAnchor(img, 0.0 + xOffset);
+			AnchorPane.setTopAnchor(web0, 7.0 + yOffset);
+			AnchorPane.setLeftAnchor(web0,12.5 + xOffset);
+			AnchorPane.setTopAnchor(web, 12.0 + yOffset);
+			AnchorPane.setLeftAnchor(web, 75.0 + xOffset);
 			
 			anchor.getChildren().addAll(img, web0, web);
 			
