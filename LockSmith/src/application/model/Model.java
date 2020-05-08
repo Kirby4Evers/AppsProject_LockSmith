@@ -164,7 +164,7 @@ public class Model {
 				String usr = fields[1];
 				String pass = fields[2];
 				String email = fields[3];
-				Entry e = new Entry(website,usr,pass,email);
+				Entry e = new Entry(website,usr,pass,email,this.username);
 				entries.add(e);
 				
 			}
