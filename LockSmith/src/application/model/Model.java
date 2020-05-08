@@ -137,7 +137,6 @@ public class Model {
 				
 			}
 			
-			System.out.println("Data:\n" + data + "\n End");
 			printer.write(data);
 			printer.close();
 			
@@ -152,7 +151,6 @@ public class Model {
 	public void readFile(String password)
 	{
 		String hashedP = Security.hash(password);
-		//System.out.println("Read is being called");
 		
 		String path = csvFolderPath + this.username + ".csv";
 		try {
