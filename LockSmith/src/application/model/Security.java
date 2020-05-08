@@ -223,13 +223,13 @@ public abstract class Security {
 	
 	
 	
-	
+	/*
 	public static String uniqueKey(String key)
 	{
 		
 		String uKey = hash(key);
 		return(uKey);
 	}
-
+	*/
 }
 
