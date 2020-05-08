@@ -1,5 +1,8 @@
 package application.model;
  
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -154,6 +157,16 @@ public abstract class Security {
 		{
 		e.printStackTrace();
 		}
+	}
+	
+	public static void copyToClipboard(String text) {
+		
+		StringSelection selection = new StringSelection( text );
+		
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(selection, selection);
+		
+		
 	}
 	
 	

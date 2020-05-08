@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import application.model.Entry;
 import application.model.Model;
+import application.model.Security;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,6 +23,24 @@ public class ShowEntryInfo {
 	@FXML private TextField passwordField;
 	@FXML private TextField websiteName;
 	@FXML private TextField emailField;
+	
+	@FXML private Button copyWebsite;
+	@FXML private Button copyUsername;
+	@FXML private Button copyPassword;
+	@FXML private Button copyEmail;
+	
+	@FXML public void copyWeb() { 
+		Security.copyToClipboard( websiteName.getText() ); 
+	}
+	@FXML public void copyUsr() { 
+		Security.copyToClipboard( usernameField.getText() ); 
+	}
+	@FXML public void copyPass() { 
+		Security.copyToClipboard( passwordField.getText() ); 
+	}
+	@FXML public void copyMail() { 
+		Security.copyToClipboard( emailField.getText() ); 
+	}
 	
 	public ShowEntryInfo(Entry e, Stage s, Model model) { //stage and return scene to go back to previous view
 		

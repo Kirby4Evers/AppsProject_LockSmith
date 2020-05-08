@@ -25,7 +25,7 @@
     <TextField fx:id="usernameField" layoutX="166.0" layoutY="164.0" prefHeight="25.0" prefWidth="330.0" />
     <TextField fx:id="passwordField" layoutX="166.0" layoutY="217.0" prefHeight="25.0" prefWidth="330.0" />
     <TextField fx:id="emailField" layoutX="166.0" layoutY="270.0" prefHeight="25.0" prefWidth="330.0" />
-    <Button fx:id="usernameCopy" layoutX="520.0" layoutY="160.0" mnemonicParsing="false">
+    <Button fx:id="usernameCopy" layoutX="520.0" layoutY="160.0" mnemonicParsing="false" onAction="#copyUsr">
       <graphic>
         <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
           <image>
@@ -34,7 +34,7 @@
         </ImageView>
       </graphic>
     </Button>
-    <Button fx:id="passwordCopy" layoutX="520.0" layoutY="213.0" mnemonicParsing="false">
+    <Button fx:id="passwordCopy" layoutX="520.0" layoutY="213.0" mnemonicParsing="false" onAction="#copyPass">
       <graphic>
         <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
           <image>
@@ -43,7 +43,7 @@
         </ImageView>
       </graphic>
     </Button>
-    <Button fx:id="emailCopy" layoutX="520.0" layoutY="266.0" mnemonicParsing="false">
+    <Button fx:id="emailCopy" layoutX="520.0" layoutY="266.0" mnemonicParsing="false" onAction="#copyMail">
       <graphic>
         <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
           <image>
@@ -55,7 +55,7 @@
     <Button fx:id="saveButton" font="$x1" layoutX="342.0" layoutY="332.0" mnemonicParsing="false" onAction="#save" text="Save" />
     <TextField fx:id="websiteName" alignment="CENTER" layoutX="166.0" layoutY="113.0" prefWidth="330.0" promptText="" text="" />
     <Label alignment="CENTER_RIGHT" font="$x1" layoutX="41.0" layoutY="112.0" prefWidth="90.0" text="Website" textFill="#fcfcfc" />
-    <Button id="usernameCopy" fx:id="websiteCopy" layoutX="520.0" layoutY="110.0" mnemonicParsing="false">
+    <Button id="usernameCopy" fx:id="websiteCopy" layoutX="520.0" layoutY="110.0" mnemonicParsing="false" onAction="#copyWeb">
       <graphic>
         <ImageView fitHeight="25.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
           <image>
