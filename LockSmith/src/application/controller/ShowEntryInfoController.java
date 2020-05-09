@@ -12,23 +12,33 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+ * Group Project : LockSmith- Spring-2020
+ * 
+ * @authors Kyle Evers(RIY335) ; Sabita Paudyal Ghimire(agi486); Jonathan
+ *          Villreal (zyj680); Pedro Jusino(ayt689) ; William G (Qoi678)
+ * 
+ *
+ *	This class handles, getting values from model and populates on view
+ */
 public class ShowEntryInfoController {
 	private Entry entry;
 	private Stage stage;
 	private Model model;
 	private Boolean temporary;
-
+	// Text field variables
 	@FXML private TextField usernameField;
 	@FXML private TextField passwordField;
 	@FXML private TextField websiteName;
 	@FXML private TextField emailField;
-	
+	//Button variables
 	@FXML private Button copyWebsite;
 	@FXML private Button copyUsername;
 	@FXML private Button copyPassword;
 	@FXML private Button copyEmail;
 	
+	//Following methods help to copy texts on the UI's text fields to clipboard,
+	//user can use them to paste anywhere later
 	@FXML public void copyWeb() { 
 		Security.copyToClipboard( websiteName.getText() ); 
 	}
@@ -41,9 +51,9 @@ public class ShowEntryInfoController {
 	@FXML public void copyMail() { 
 		Security.copyToClipboard( emailField.getText() ); 
 	}
+	//stage and return scene to go back to previous view
 	
-	public ShowEntryInfoController(Entry e, Stage s, Model model, Boolean tmp) { //stage and return scene to go back to previous view
-		
+	public ShowEntryInfoController(Entry e, Stage s, Model model, Boolean tmp) { 
 		this.entry = e;
 		this.stage = s;
 		this.model = model;
@@ -57,7 +67,9 @@ public class ShowEntryInfoController {
 	}
 	
 	
-	//getting user input and saving into the files related to that user
+		/**
+		 * getting user input and saving into the files related to that user
+		 */
 		@FXML
 		public void save() {
 			
@@ -85,6 +97,9 @@ public class ShowEntryInfoController {
 			goBack();	
 		}
 		
+		/**
+		 * populating the UI with values obtained from model
+		 */
 		public void fill() {
 			
 			usernameField.setText( entry.getUsername() );
@@ -93,6 +108,10 @@ public class ShowEntryInfoController {
 			websiteName.setText( entry.getWebsite());
 		}
 		
+		/**
+		 * This method when called, loads up the previous (shoEntries.fxml) page
+		 * 
+		 */
 		public void goBack() {
 			try {
 				
