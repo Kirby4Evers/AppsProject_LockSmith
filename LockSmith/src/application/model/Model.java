@@ -30,11 +30,12 @@ public class Model {
 	public String username = "";
 
 	/**
-	 * this method varifies the username and password. If varified, returns true.
-	 * else, return false. First, all the username and password from file are saved
-	 * in arrayList named log. Method uses that arraylist to varify if the username
-	 * and password match.
-	 *
+
+	 * this method varifies the username and password if varified return true, else
+	 * return false. First, all the username and password from file are saved in
+	 * arrayList named log it uses that arraylist to varify if the username and
+	 * password matches.
+	 * 
 	 * @param username
 	 * @param password
 	 * @return
@@ -60,7 +61,6 @@ public class Model {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-//Using 
 		String hashedP = Security.hash(p);
 		for (int j = 0; j < log.size(); j++) {
 
@@ -120,7 +120,7 @@ public class Model {
 
 			System.out.println("finished");
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
@@ -135,43 +135,29 @@ public class Model {
 			FileWriter printer = new FileWriter(file, false);
 
 			String data = "";
-			for (Entry e : entries) {
-				data += e.getWebsite() + ",";
-				data += e.getUsername() + ",";
-				data += e.getPassword() + ",";
-				data += e.getEmail() + ",";
-				data += "\n";
-
-			}
 			String line = "";
-			for (Entry e : entries)
-			{
+			for (Entry e : entries) {
 				line += e.getWebsite() + ",";
 				line += e.getUsername() + ",";
 				line += e.getPassword() + ",";
 				line += e.getEmail();
-				
+
 				data += line + "\n";
 				line = "";
-				
+
 			}
 
-			
 			printer.write(data);
 			printer.close();
 
 			Security.encryptF(path, hashedP);
 
-		
-		}catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	/**
-	 * @param password
-	 */
 	public void readFile(String password) {
 		String hashedP = Security.hash(password);
 
