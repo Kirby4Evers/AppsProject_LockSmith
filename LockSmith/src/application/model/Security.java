@@ -30,10 +30,10 @@ import java.util.Base64;
  *
  */
 public abstract class Security {
-	private static String salt = "ssshhhhhhhhhhh!!!!";
+	private static String salt = "ssshhhhhhhhhhh!!!!"; //used in AES
 	
 	/*
-	 * uses MD5 algorythm to hash password without salt
+	 * uses MD5 algorithm to hash password entered without salt
 	 * near carbon copy of https://howtodoinjava.com/security/how-to-generate-secure-password-hash-md5-sha-pbkdf2-bcrypt-examples/#md5 
 	 */
 	public static String hash(String text)
@@ -65,10 +65,10 @@ public abstract class Security {
 	
 	
 	/*
-	 * takes in a sting and key and returns encypted text
+	 * takes in a sting and key and returns encrypted text
 	 * key should ideally be hashed master password
 	 * direct copy of https://howtodoinjava.com/security/aes-256-encryption-decryption/
-	 * Tried doing a blowish algorythm but that never worked
+	 * Tried doing a blowish algorithm but that never worked
 	 */
 	public static String encryptS(String text, String key) throws Exception
 	{
@@ -77,12 +77,14 @@ public abstract class Security {
 			
 	        byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	        IvParameterSpec ivspec = new IvParameterSpec(iv);
-	         
+	        
+	        //Creating SecretKeySpec from key(argument)
 	        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
 	        KeySpec spec = new PBEKeySpec(key.toCharArray(), salt.getBytes(), 65536, 256);
 	        SecretKey tmp = factory.generateSecret(spec);
 	        SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
-	         
+	        
+	        //using key to encrypt via cipher
 	        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 	        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivspec);
 	        return Base64.getEncoder().encodeToString(cipher.doFinal(text.getBytes("UTF-8")));
@@ -94,10 +96,10 @@ public abstract class Security {
 	}
 	
 	/*
-	 * takes in a encypted sting and key and returns decrypted text
+	 * takes in a encrypted sting and key and returns decrypted text
 	 * key should ideally be hashed master password
 	 * direct copy of https://howtodoinjava.com/security/aes-256-encryption-decryption/
-	 * Tried doing a blowish algorythm but that never worked
+	 * Tried doing a blowish algorithm but that never worked
 	 */
 	public static String decryptS(String text, String key) throws Exception
 	{
@@ -108,12 +110,14 @@ public abstract class Security {
 		try {
 	        byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	        IvParameterSpec ivspec = new IvParameterSpec(iv);
-	         
+	        
+	        //Creating SecretKeySpec from key(argument)
 	        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
 	        KeySpec spec = new PBEKeySpec(key.toCharArray(), salt.getBytes(), 65536, 256);
 	        SecretKey tmp = factory.generateSecret(spec);
 	        SecretKeySpec secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
 	         
+	        //using key to decrypt via cipher
 	        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
 	        cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
 	        return new String(cipher.doFinal(Base64.getDecoder().decode(text)));
@@ -126,7 +130,7 @@ public abstract class Security {
 	
 	/*
 	 * Takes in a path to a text file and a key to encrypt with
-	 * encypts and saves the txt file
+	 * Encrypts and saves the csv file
 	 */
 	static void encryptF(String filePath, String key )
 	{
@@ -156,8 +160,8 @@ public abstract class Security {
 	}
 	
 	/*
-	 * Takes in a path to a encypted text file and a key to decypt with
-	 * decypts and saves the txt file
+	 * Takes in a path to a encrypted text file and a key to decrypt with
+	 * decrypt and saves the csv file
 	 */
 	static void decryptF( String filePath, String key)
 	{
@@ -186,6 +190,10 @@ public abstract class Security {
 		}
 	}
 	
+	/*
+	 * Copies text to the system default clip board
+	 * May not work on linux depending of what Java JDK is present
+	 */
 	public static void copyToClipboard(String text) {
 		
 		StringSelection selection = new StringSelection( text );

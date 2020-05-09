@@ -123,7 +123,10 @@ public class Model {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/*
+	 * stores values in model.entries into user file
+	 */
 	public void writeFile(String password) {
 		// System.out.println("Write is being called");
 		String hashedP = Security.hash(password);
@@ -157,7 +160,10 @@ public class Model {
 		}
 
 	}
-
+	
+	/*
+	 * reads user files and loads values into mode.entries
+	 */
 	public void readFile(String password) {
 		String hashedP = Security.hash(password);
 
