@@ -48,7 +48,7 @@ public class ShowEntriesController {
 
 		Entry e = new Entry();
 		model.getEntries().add(e);
-		switchToEntry(e);
+		switchToEntry(e, true);
 	}
 
 	/**
@@ -86,36 +86,41 @@ public class ShowEntriesController {
 
 			anchor.getChildren().addAll(img, web0, web);
 
-			HBox hbox = new HBox(anchor); // 20 is spacing
-			hbox.setAlignment(Pos.CENTER_LEFT);
-			hbox.setOnMouseClicked(ev -> switchToEntry(e));
 
+
+			
+			HBox hbox = new HBox(anchor); //20 is spacing
+			hbox.setAlignment( Pos.CENTER_LEFT );
+			hbox.setOnMouseClicked( ev -> switchToEntry(e, false) );
+			
 			entriesBox.getChildren().add(hbox);
 
 		}
 	}
+
 
 	/**
 	 * When this method is called, it switches the view to WevsiteUI.fxml
 	 * 
 	 * @param e
 	 */
-	public void switchToEntry(Entry e) {
+
+	public void switchToEntry(Entry e, Boolean temporary){
 		try {
-			// setting controller loader and parent and Scene
+			
+		ShowEntryInfoController eCtonroller = new ShowEntryInfoController( e, stage, model, temporary );//used to go back
 
-			ShowEntryInfo eCtonroller = new ShowEntryInfo(e, stage, model);// used to go back
-			FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
-			eLoader.setController(eCtonroller);
-			Parent eRoot = eLoader.load();
-			Scene eScene = new Scene(eRoot, 600, 400);
-
-			stage.setScene(eScene);
-			stage.show();
-
+		FXMLLoader eLoader = new FXMLLoader(getClass().getResource("../view/WebsiteUI.fxml"));
+		eLoader.setController(eCtonroller);
+		Parent eRoot = eLoader.load();
+		Scene eScene = new Scene(eRoot,600,400);
+		
+		stage.setScene(eScene);
+		stage.show();
+		
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
+		
 	}
 }

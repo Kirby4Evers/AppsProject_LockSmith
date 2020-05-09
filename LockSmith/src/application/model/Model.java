@@ -143,13 +143,27 @@ public class Model {
 				data += "\n";
 
 			}
+			String line = "";
+			for (Entry e : entries)
+			{
+				line += e.getWebsite() + ",";
+				line += e.getUsername() + ",";
+				line += e.getPassword() + ",";
+				line += e.getEmail();
+				
+				data += line + "\n";
+				line = "";
+				
+			}
 
+			
 			printer.write(data);
 			printer.close();
 
 			Security.encryptF(path, hashedP);
 
-		} catch (IOException e) {
+		
+		}catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -160,6 +174,7 @@ public class Model {
 	 */
 	public void readFile(String password) {
 		String hashedP = Security.hash(password);
+
 		String path = csvFolderPath + this.username + ".csv";
 		try {
 			Security.decryptF(path, hashedP);
