@@ -24,7 +24,7 @@ import java.util.Base64;
  * @authors Kyle Evers(RIY335) ; Sabita Paudyal Ghimire(agi486); Jonathan
  *          Villreal (zyj680); Pedro Jusino(ayt689) ; William G (Qoi678)
  *          
- *   This class takes care of the security concerns. It encrypts and decrypts the password
+ *   This class takes care of the security concerns. It encrypts and decrypts the passwords
  *   in file as per requirement.
  *          
  *
